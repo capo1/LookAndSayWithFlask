@@ -8,12 +8,11 @@ from flask import request, redirect, url_for, flash
 from lookAndSay import lineSeq
 
 app = Flask(__name__)
-# konfiguracja aplikacji, w sumie nie wiem póki co, po co to jest,
+# Konfiguracja aplikacji, w sumie nie wiem póki co, po co to jest,
 # było w przykładzie z jakiego korzystałam :shrug:
 app.config.update(dict(
     SECRET_KEY='bradzosekretnawartosc',
 ))
-
 
 title = "Look and Say - Python Flask Example" 
 
@@ -22,7 +21,7 @@ title = "Look and Say - Python Flask Example"
 # POST - potrzebny do wysłania danych z formularza
 @app.route('/', methods = ['GET', 'POST'])
 
-# Funckja obsługująca wysłanie formularza, bardzo uproszczona
+# Funkcja obsługująca wysłanie formularza, bardzo uproszczona
 def index():
     # Określenie, że żądanie pochodzi z POST'a
     if request.method == 'POST':
@@ -36,21 +35,13 @@ def index():
         else:
             # Wykonanie LookAndSay
             results = lineSeq(odpowiedzi["number"], int(odpowiedzi["iterations"]))
-
-            # przypisałam te zmienne do flasha
-            # wyświetlane są w ten sam sposób jak result. 
-            # Można było przypisać też do GET, 
-            # wtedy w url by się wyświetliło:?number=x&iterations=y, 
-            # ale nie chciałeś takiego sposobu
-            flash(odpowiedzi["number"], 'number')
-            flash(odpowiedzi["iterations"], 'iterations')
             
         #przekierowanie do odpowiedniego url'a
-        return render_template('index.html', title = title, results = results)
+        return render_template('index.html', title = title, results = results, number = odpowiedzi["number"], iterations = odpowiedzi["iterations"])
     
     # wyrenderowanie części templeta, 
     # przekazanie zdefiniowanej zmiennej, tak dla przykładu :)
-    return render_template('index.html', title = title, results = None)
+    return render_template('index.html', title = title, number = 5, iterations = 10)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug = True)
