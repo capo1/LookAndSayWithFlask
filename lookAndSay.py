@@ -1,25 +1,25 @@
 def lookAndSay(number, r):
-  res = []
+  result = []
   chars = (number + " ").split(" ")
   count = 0
-  prev = chars[0]
+  prevItem = chars[0]
 
   for i in range(len(chars)):
-    ne=chars[i]
-    if (ne == prev):
+    nextItem = chars[i]
+    if (nextItem == prevItem):
       count += 1
     else:
-      res.append(str(count))
-      res.append(prev)
-      prev = ne
+      result.append(str(count))
+      result.append(prevItem)
+      prevItem = nextItem
       count = 1
-  return " ".join(res)
+  return " ".join(result)
 
-def lineSeq(nu, line):
-  res = nu
-  All = []
+def lineSeq(sequenceNumber, line):
+  result = sequenceNumber
+  allLines = []
   for i in range(0, line):
-    All.append(res)
-    res = lookAndSay(res,nu)
-  return All
+    allLines.append(result)
+    result = lookAndSay(result,sequenceNumber)
+  return allLines
 
