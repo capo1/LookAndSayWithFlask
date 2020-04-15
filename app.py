@@ -28,10 +28,10 @@ def index():
     # Sprawdzenie request'a, dla POST (czyli wysłanie formularza, obliczenie danych)
     if request.method == "POST":
         
-        # przypisanie zmiennych z pól formularza do dict
+        # Przypisanie zmiennych z pól formularza do dict
         odpowiedzi = request.form.to_dict()
         
-        # podstawowa walidacja formularza
+        # Podstawowa walidacja formularza
         if not odpowiedzi["number"] or not odpowiedzi["iterations"]:
             flash("Please, fill required fields", "error")
             odpowiedzi["number"] = odpowiedzi["number"] or ' '
@@ -41,11 +41,10 @@ def index():
             # Wykonanie LookAndSay
             results = lineSeq(odpowiedzi["number"], int(odpowiedzi["iterations"]))
             
-        #przekierowanie do odpowiedniego url'a
+        # Przekazanie zmiennych do templet'a
         return render_template("index.html", title = title, results = results, inputs = {"number": odpowiedzi["number"], "iterations": odpowiedzi["iterations"]})
     
-    # wyrenderowanie części templeta, 
-    # przekazanie zdefiniowanej zmiennej, tak dla przykładu :)
+    # Wyrenderowanie części templeta dla GET'a
     return render_template("index.html", title = title, inputs = {"number": defaultNumber, "iterations": defaultIterations} )
 
 if __name__ == "__main__":
