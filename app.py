@@ -37,11 +37,11 @@ def index():
             results = lineSeq(odpowiedzi["number"], int(odpowiedzi["iterations"]))
             
         #przekierowanie do odpowiedniego url'a
-        return render_template('index.html', title = title, results = results, number = odpowiedzi["number"], iterations = odpowiedzi["iterations"])
+        return render_template('index.html', title = title, results = results, inputs = {"number": odpowiedzi["number"], 'iterations': odpowiedzi["iterations"]})
     
     # wyrenderowanie części templeta, 
     # przekazanie zdefiniowanej zmiennej, tak dla przykładu :)
-    return render_template('index.html', title = title, number = 5, iterations = 10)
+    return render_template('index.html', title = title, inputs = {"number": 5, 'iterations': 10} )
 
 if __name__ == '__main__':
     app.run(debug = True)
