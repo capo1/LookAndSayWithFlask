@@ -35,15 +35,16 @@ def index():
             
             # String z odpowiedzią, rodzielenie logiki odpowiedzi ze sposobem jego wyświetlenia 
             responseStr=""
+            print(result)
             for i in range(len(result)):
                 responseStr +=  "<li>#%s: %s</li>" % (i+1, result[i])
                 
-                # przypisanie odpowiedzi do stringa result, do którego się odwołuję w componencie result
-                flash(responseStr,'result')
+            # przypisanie odpowiedzi do stringa result, do którego się odwołuję w componencie result
+            flash(responseStr,'result')
                 
-                # przypisałam te zmienne do flasha, i wyświetlane są w ten sam sposób jak result. Można było przypisać też do GET, wtedy w url by się wyświetliło ?number=x&iterations=y ale nie chciałeś takiego sposobu
-                flash(odpowiedzi["number"], 'number')
-                flash(odpowiedzi["iterations"], 'iterations')
+            # przypisałam te zmienne do flasha, i wyświetlane są w ten sam sposób jak result. Można było przypisać też do GET, wtedy w url by się wyświetliło ?number=x&iterations=y ale nie chciałeś takiego sposobu
+            flash(odpowiedzi["number"], 'number')
+            flash(odpowiedzi["iterations"], 'iterations')
         #przekierowanie do odpowiedniego url'a
         return redirect(url_for('index') )
     # wyrenderowanie części templeta, przekazanie zdefiniowanej zmiennej

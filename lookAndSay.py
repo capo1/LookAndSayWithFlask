@@ -1,12 +1,12 @@
 def lookAndSay(number, r):
-  res=[]
-  chars = (number+" ").split(" ")
+  res = []
+  chars = (number + " ").split(" ")
   count = 0
   prev = chars[0]
 
   for i in range(len(chars)):
     ne=chars[i]
-    if (ne==prev):
+    if (ne == prev):
       count += 1
     else:
       res.append(str(count))
