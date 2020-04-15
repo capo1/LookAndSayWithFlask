@@ -1,18 +1,14 @@
-<html>
-
+<html lang="en">
 <head>
-    <title>Look and Say - Python Flask Example</title>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-
 </head>
-
 <body>
     <div class="lookandsay">
         <!-- wyświetlamy rezultat z funkcji flash -->
-        {% include "components/form.html" %} {% include "components/result.html" %}
-
-
+        {% include "components/form.html" %} 
+        {% include "components/result.html" %}
     </div>
 </body>
-
 </html>

@@ -1,18 +1,21 @@
 <form method="POST" class="form">
+    <!-- ten include dla flashMessages jest aby wyświetlić komunikaty ze strony serwera.
+         Niekoniecznie jest to potrzebne, bo pola formularza są określone jako required
+         Co wymusza na przeglądarce, aby nie wysłała formularza dopóki, nie jest on poprawnie wypełniony
+    -->
     {% include "components/flashMessages.html" %}
-    <h3>Look and Say</h3>
+    <h3>{{ title }}</h3>
     <label>
-    Number*: 
-    {% with number = get_flashed_messages(category_filter="number") %}     
-    <input type="number" required min="0" value="{{number[0]}}" name="number"/>
-    {% endwith %}
-  </label>
+     Number*: 
+      {% with number = get_flashed_messages(category_filter="number") %}     
+        <input type="number" required min="0" value="{{number[0]}}" name="number"/>
+      {% endwith %}
+    </label>
     <label>
-    Iteration* <small>(max: 30)</small>: 
-    {% with iterations = get_flashed_messages(category_filter="iterations") %} 
-    <input type="number" required min="0" max="30" value="{{iterations[0]}}" name="iterations"/>
-    {% endwith %}
-  
-  </label>
+      Iteration* <small>(max: 30)</small>: 
+      {% with iterations = get_flashed_messages(category_filter="iterations") %} 
+        <input type="number" required min="0" max="30" value="{{iterations[0]}}" name="iterations"/>
+      {% endwith %}  
+    </label>
     <button type="submit" name="submit">Calculate</button>
 </form>

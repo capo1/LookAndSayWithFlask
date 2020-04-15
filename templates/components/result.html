@@ -1,6 +1,12 @@
 <div class="result">
-    <h3> Result:</h3> {% with messages = get_flashed_messages(category_filter="result") %} {% if messages %}
-    <ul>
-        {% for message in messages %} {{ message |safe}}{% endfor %} {% endif %}
-    </ul> {% endwith %}
+    <h3> Result:</h3> 
+    {% with messages = get_flashed_messages(category_filter="result") %} 
+      {% if messages %}
+        <ul>
+            {% for message in messages %} 
+                {{ message |safe}}
+            {% endfor %} 
+      {% endif %}
+        </ul> 
+    {% endwith %}
 </div>
