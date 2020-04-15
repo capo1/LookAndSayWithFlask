@@ -40,6 +40,9 @@ def index():
                 responseStr +=  "<li>#%s: %s</li>" % (i+1, result[i])
                 
             # przypisanie odpowiedzi do stringa result, do którego się odwołuję w componencie result
+            
+            responseStr += '<li><strong>Sequence: </strong> %s </li>' % ", ".join(result)
+            
             flash(responseStr,'result')
                 
             # przypisałam te zmienne do flasha, i wyświetlane są w ten sam sposób jak result. Można było przypisać też do GET, wtedy w url by się wyświetliło ?number=x&iterations=y ale nie chciałeś takiego sposobu
