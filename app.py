@@ -14,7 +14,7 @@ app.config.update(dict(
 
 title = "Look and Say - Python Flask Example" 
 
-# główny roo aplikacji, obsługujący dwie metody GET i POST
+# główny route aplikacji, obsługujący dwie metody GET i POST
 # GET potrzebny do wyświetlenia
 # POST do wysłania danych z formularza
 @app.route('/',methods=['GET', 'POST'])
