@@ -1,12 +1,14 @@
 <div class="result">
-    <h3> Result:</h3> 
-    {% with messages = get_flashed_messages(category_filter="result") %} 
-      {% if messages %}
-        <ul>
-            {% for message in messages %} 
-                {{ message |safe}}
-            {% endfor %} 
-      {% endif %}
-        </ul> 
-    {% endwith %}
+    {% if results %}
+      <h3>Result:</h3>
+      <ul>
+          {% for result in results %}
+          <li>#{{ loop.index }}: {{ result }}</li>
+          {%endfor%}
+      </ul>
+      <hr/>
+      <strong>Sequence: </strong>{{ results | join(", ") }}
+    {% else %}
+      <h3>Result (waiting for data...)</h3>
+    {%endif%}
 </div>

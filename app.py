@@ -4,6 +4,7 @@
 from flask import Flask
 from flask import render_template
 from flask import request, redirect, url_for, flash
+
 from lookAndSay import lineSeq
 
 app = Flask(__name__)
@@ -12,6 +13,7 @@ app = Flask(__name__)
 app.config.update(dict(
     SECRET_KEY='bradzosekretnawartosc',
 ))
+
 
 title = "Look and Say - Python Flask Example" 
 
@@ -33,25 +35,8 @@ def index():
             flash("Please, fill required fields", 'error')
         else:
             # Wykonanie LookAndSay
-            result = lineSeq(odpowiedzi["number"], int(odpowiedzi["iterations"]))
-            
-            # String z odpowiedzią, rodzielenie logiki odpowiedzi ze sposobem jego wyświetlenia 
-            responseStr = ""
-            
-            # to wyświetla się na consoli
-            print(result)
-            
-            for i in range(len(result)):
-                responseStr +=  "<li>#%s: %s</li>" % (i + 1, result[i])
-                
-            # przypisanie odpowiedzi do stringa result,
-            # do którego się odwołuję w componencie result
-            # ponieważ używam tutaj HTML'a, w teplecie jest użyte do jego sparsowania "| safe "
-            responseStr += '<li><hr/><strong>Sequence:<br/></strong> %s </li>' % ", ".join(result)
-            
-            # "wysłanie" odpowiedzi do templeta
-            flash(responseStr, 'result')
-                
+            results = lineSeq(odpowiedzi["number"], int(odpowiedzi["iterations"]))
+
             # przypisałam te zmienne do flasha
             # wyświetlane są w ten sam sposób jak result. 
             # Można było przypisać też do GET, 
@@ -61,11 +46,11 @@ def index():
             flash(odpowiedzi["iterations"], 'iterations')
             
         #przekierowanie do odpowiedniego url'a
-        return redirect(url_for('index'))
+        return render_template('index.html', title = title, results = results)
     
     # wyrenderowanie części templeta, 
     # przekazanie zdefiniowanej zmiennej, tak dla przykładu :)
-    return render_template('index.html', title = title)
+    return render_template('index.html', title = title, results = None)
 
 if __name__ == '__main__':
     app.run(debug=True)
