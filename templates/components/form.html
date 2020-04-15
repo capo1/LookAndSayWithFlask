@@ -8,13 +8,13 @@
     <label>
      Number*: 
       {% if inputs["number"] %}     
-        <input type="number" required min="0" value="{{ inputs["number"] }}" name="number"/>
+        <input type="number" min="0" value="{{ inputs["number"] }}" name="number"/>
       {% endif %}
     </label>
     <label>
       Iteration* <small>(max: 30)</small>: 
       {% if inputs["iterations"] %} 
-        <input type="number" required min="0" max="30" value="{{ inputs["iterations"] }}" name="iterations"/>
+        <input type="number"  min="0" max="30" value="{{ inputs["iterations"] }}" name="iterations"/>
       {% endif %}  
     </label>
     <button type="submit" name="submit">Calculate</button>

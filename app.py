@@ -16,14 +16,16 @@ app.config.update(dict(
 
 title = "Look and Say - Python Flask Example" 
 
-# główny route aplikacji, obsługujący dwie metody GET i POST
+# Główny route aplikacji, obsługujący dwie metody GET i POST
 # GET - potrzebny do wyświetlenia
 # POST - potrzebny do wysłania danych z formularza
 @app.route("/", methods = ["GET", "POST"])
 
 # Funkcja obsługująca wysłanie formularza, bardzo uproszczona
 def index():
-    # Określenie, że żądanie pochodzi z POST'a
+    defaultNumber = 5
+    defaultIterations = 10
+    # Sprawdzenie request'a, dla POST (czyli wysłanie formularza, obliczenie danych)
     if request.method == "POST":
         
         # przypisanie zmiennych z pól formularza do dict
@@ -32,6 +34,9 @@ def index():
         # podstawowa walidacja formularza
         if not odpowiedzi["number"] or not odpowiedzi["iterations"]:
             flash("Please, fill required fields", "error")
+            odpowiedzi["number"] = odpowiedzi["number"] or ' '
+            odpowiedzi["iterations"] = odpowiedzi["iterations"] or ' '
+            results = ""
         else:
             # Wykonanie LookAndSay
             results = lineSeq(odpowiedzi["number"], int(odpowiedzi["iterations"]))
@@ -41,7 +46,7 @@ def index():
     
     # wyrenderowanie części templeta, 
     # przekazanie zdefiniowanej zmiennej, tak dla przykładu :)
-    return render_template("index.html", title = title, inputs = {"number": 5, "iterations": 10} )
+    return render_template("index.html", title = title, inputs = {"number": defaultNumber, "iterations": defaultIterations} )
 
 if __name__ == "__main__":
     app.run(debug = True)
