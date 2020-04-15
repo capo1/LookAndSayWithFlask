@@ -19,7 +19,7 @@ def index():
         odpowiedzi = request.form.to_dict()
         
         if not odpowiedzi["number"] or not odpowiedzi["iterations"]:
-            flash("Wypełnij brakujące pola",'error')
+            flash("Please, fill required fields",'error')
         else:
             result = lineSeq(odpowiedzi["number"],int(odpowiedzi["iterations"]))
             responseStr=""
