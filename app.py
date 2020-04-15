@@ -41,7 +41,7 @@ def index():
                 
             # przypisanie odpowiedzi do stringa result, do którego się odwołuję w componencie result
             
-            responseStr += '<li><strong>Sequence:<br/></strong> %s </li>' % ", ".join(result)
+            responseStr += '<li><hr/><strong>Sequence:<br/></strong> %s </li>' % ", ".join(result)
             
             flash(responseStr,'result')
                 

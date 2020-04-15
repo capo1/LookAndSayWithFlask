@@ -24,6 +24,13 @@ button {
     border: 1px solid #b7cace;
 }
 
+hr {
+    border: 1px solid #e6e6e6;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+}
+
 button {
     cursor: pointer
 }
