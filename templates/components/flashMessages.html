@@ -1,0 +1,5 @@
+{% with messages = get_flashed_messages(category_filter="errors") %} {% if messages %}
+<ul class="errors">
+    {% for message in messages %}
+    <li>{{ message }}</li> {% endfor %} {% endif %}
+</ul> {% endwith %}
